@@ -203,9 +203,32 @@ public class Ruivinhademarte extends ApplicationAdapter {
 			}
 		}
 
-		private void  desenharTexturas(){
 
+	}
+	private void  desenharTexturas(){
+		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		batch.draw(fundo,0,0,larguraDispositivo,alturaDispositivo);
+		batch.draw(passaros[ (int) variacao]
+				50 + posicaoHorizontalPassaro, posicaoInicialVerticalPassaro);
+		batch.draw(canoBaixo, posicaoCanoHorizontal,
+				alturaDispositivo / 2 - canoBaixo.getHeight() - espacoEntreCanos/2 + posicaoCanoVerical);
+		batch.draw(canoTopo,posicaoCanoHorizontal,
+				alturaDispositivo / 2 + espacoEntreCanos / 2 + posicaoCanoVerical);
+		textoPontuacao.draw(batch, String.valueOf(pontos),larguraDispositivo/2,
+				alturaDispositivo - 110);
+
+		if (estadoJogo == 0){
+			batch.draw(gameOver, larguraDispositivo/ 2 - gameOver.getWidth()/2
+					alturaDispositivo / 2);
+			textoReiniciar.draw(batch,
+					"toque para reiniciar!", larguraDispositivo/2 -140,
+					alturaDispositivo/2 - gameOver.getHeight()/2);
+			textoMelhorPontuacao.draw(batch,
+					"seu recorde é: " + pontuacaoMaxima + "pontos",
+					larguraDispositivo/2 - 140, alturaDispositivo/2 - gameOver.getHeight());
 		}
+		batch.end();
 	}
 
 
