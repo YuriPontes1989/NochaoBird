@@ -89,7 +89,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		passaros[2] = new Texture("passaro3.png");
 
 		fundo = new Texture("fundo.png");
-		canoBaixo = new Texture("cano_baixo_maior_.png");
+		canoBaixo = new Texture("cano_baixo_maior.png");
 		canoTopo = new Texture("game_over.png");
 	}
 
