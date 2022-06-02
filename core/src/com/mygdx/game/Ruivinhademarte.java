@@ -209,7 +209,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		batch.draw(fundo,0,0,larguraDispositivo,alturaDispositivo);
-		batch.draw(passaros[ (int) variacao]
+		batch.draw(passaros[ (int) variacao],
 				50 + posicaoHorizontalPassaro, posicaoInicialVerticalPassaro);
 		batch.draw(canoBaixo, posicaoCanoHorizontal,
 				alturaDispositivo / 2 - canoBaixo.getHeight() - espacoEntreCanos/2 + posicaoCanoVerical);
@@ -219,7 +219,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 				alturaDispositivo - 110);
 
 		if (estadoJogo == 0){
-			batch.draw(gameOver, larguraDispositivo/ 2 - gameOver.getWidth()/2
+			batch.draw(gameOver, larguraDispositivo/ 2 - gameOver.getWidth()/2,
 					alturaDispositivo / 2);
 			textoReiniciar.draw(batch,
 					"toque para reiniciar!", larguraDispositivo/2 -140,
@@ -230,6 +230,29 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		}
 		batch.end();
 	}
+	public  void  validarPontos(){
 
+		if (posicaoCanoHorizontal < 50-passaros[0].getWidth()){
+			if (!passouCano){
+				pontos++;
+				passouCano = true;
+				somPontuacao.play();
+			}
+		}
 
+		variacao += Gdx.graphics.getDeltaTime()  * 10;
+
+		if (variacao > 3)
+			variacao = 0;
+	}
+
+	@Override
+	public  void resize(int width, int height){
+		viewport.update(width, height);
+	}
+
+	@Override
+	public  void dispose (){
+
+	}
 }
