@@ -74,13 +74,13 @@ public class Ruivinhademarte extends ApplicationAdapter {
 	private Viewport viewport;
 	private final float VIRTUAL_WIDTH = 720;
 	private final float VIRTUAL_HEIGHT = 1280;
-	// Primeiro método chamado que cria o aplicativo chamando alguns métodos.
+	//  inicilizand os obejetos e variaveis
 	@Override
 	public void create () {
 		inicializarTexturas();
 		inicializarObjetos();
 	}
-	// Método que é chamado a cada frame  e chama alguns métodos para serem atualizados.
+	// irá gerar todo o frame  e chama alguns métodos para serem atualizados.
 	@Override
 	public void render () {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
@@ -92,7 +92,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 	}
 	// inicializando as texturas nas variaveis ja então criadas
 	private void inicializarTexturas(){
-		// Textura de animação do pássaro (jogador).
+		// Texturas de animação do pássaro.
 		passaros = new Texture[3];
 		passaros[0] = new Texture("AngryBird1.png");
 		passaros[1] = new Texture("AngryBird2.png");
@@ -102,7 +102,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		canoBaixo = new Texture("cano_baixo_maior.png");
 		canoTopo = new Texture("cano_topo_maior.png");
 		gameOver = new Texture("game_over.png");
-		// Textura das moedas;
+		// Texturas das moedas;
 		coin = new Texture[2];
 		coin[0] = new Texture("SilverCoin.png");
 		coin[1] = new Texture("GoldCoin.png");
@@ -119,15 +119,15 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		posicaoCoinVertical = alturaDispositivo / 2;
 		posicaoCoinHorizontal = larguraDispositivo * 1.5f + canoBaixo.getWidth();
 		espacoEntreCanos = 250;
-		// Criando um   texto de pontução e atribuindo a ele  a cor branca e tamanho 10.
+		// Criando um   texto de pontução e atribuindo a ele  a cor branca e tamanho .
 		textoPontuacao = new BitmapFont();
 		textoPontuacao.setColor(Color.WHITE);
 		textoPontuacao.getData().setScale(10);
-		// Criando um  texto de reinicar com a cor verde e tamanho 2.
+		// Criando um  texto de reinicar com a cor verde e tamanho .
 		textoReiniciar = new BitmapFont();
 		textoReiniciar.setColor(Color.GREEN);
 		textoReiniciar.getData().setScale(2);
-		// Criando o texto de melhor pontuação e atribuindo ele a cor vermelha e tamanho 2.
+		// Criando o texto de melhor pontuação e atribuindo ele a cor vermelha e tamanho .
 		textoMelhorPontuacao = new BitmapFont();
 		textoMelhorPontuacao.setColor(Color.RED);
 		textoMelhorPontuacao.getData().setScale(2);
@@ -137,7 +137,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		circuloCoin = new Circle();
 		retanguloCanoBaixo = new Rectangle();
 		retanguloCanoCima = new Rectangle();
-		// Define os sons pegando eles pelos arquivos do projeto.
+		// Define os sons pegando eles pelos arquivos do projeto na pasta asset.
 		somVoando = Gdx.audio.newSound(Gdx.files.internal("som_asa.wav"));
 		somColisao = Gdx.audio.newSound(Gdx.files.internal("som_batida.wav"));
 		somPontuacao = Gdx.audio.newSound(Gdx.files.internal("som_pontos.wav"));
@@ -150,7 +150,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		camera.position.set(VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, 0);
 		viewport = new StretchViewport(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera);
 	}
-	// Método que  vai verificar o estado do jogo.
+	//   vai verificar o estado do jogo.
 	private void verificarEstadoJogo(){
 		// detecta o clique na tela
 		boolean toqueTela = Gdx.input.justTouched();
@@ -248,15 +248,15 @@ public class Ruivinhademarte extends ApplicationAdapter {
 			}
 		}
 	}
-	// Mátodo que desenha as texturas.
+	// metodo criado para  desenhar as texturas.
 	private void desenharTexturas(){
-		// Seta a matrix que sera usada.
+		// desenhou a matrix que sera usada.
 		batch.setProjectionMatrix(camera.combined);
-		// Seta o começo da batch para os desenhos.
+		// desenhou o começo da batch para os desenhos.
 		batch.begin();
-		// seta a textura do fundo do level, na posição X e Y, e define sua largura e altura.
+		// desenhou a textura do fundo do level, na posição X e Y, e define sua largura e altura.
 		batch.draw(fundo, 0, 0, larguraDispositivo, alturaDispositivo);
-		// seta textura do pássaro na posição X e Y.
+		// desenhou a textura do pássaro na posição X e Y.
 		batch.draw(passaros[(int) variacao],
 				150 + posicaoHorizontalPassaro, posicaoInicialVerticalPassaro);
 		// Desenha o cano de baixo, na posição X e Y.
@@ -284,7 +284,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 					"Seu record é: " + pontuacaoMaxima + " pontos",
 					larguraDispositivo / 2 - 140, alturaDispositivo / 2 - gameOver.getHeight());
 		}
-		// Seta o fim da batch para os desenhos.
+		// fim dos desenhos
 		batch.end();
 	}
 	// Método que irá validar os pontos.
@@ -300,7 +300,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		}
 		// Se colidiu com a moeda e nao coletou ela:
 		if(colidiuCoin && !coletouCoin){
-			// Dependendo do tipo da moeda dourada ou prateada irá adicionar uma quantidade de pontos diferentes, executa o som e reseta as variáveis da moeda para a direita.
+			// Dependendo do tipo da moeda dourada ou prateada irá adicionar uma quantidade de pontos diferentes, executa o som e reseta as variáveis da moeda 
 			coletouCoin = true;
 			colidiuCoin = false;
 			somCoin.play();
