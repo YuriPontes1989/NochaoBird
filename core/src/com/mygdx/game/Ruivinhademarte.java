@@ -300,7 +300,7 @@ public class Ruivinhademarte extends ApplicationAdapter {
 		}
 		// Se colidiu com a moeda e nao coletou ela:
 		if(colidiuCoin && !coletouCoin){
-			// Dependendo do tipo da moeda dourada ou prateada irá adicionar uma quantidade de pontos diferentes, executa o som e reseta as variáveis da moeda 
+			// Dependendo do tipo da moeda dourada ou prateada irá adicionar uma quantidade de pontos diferentes, executa o som e reseta as variáveis da moeda
 			coletouCoin = true;
 			colidiuCoin = false;
 			somCoin.play();
